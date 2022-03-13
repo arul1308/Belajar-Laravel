@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminGenreController;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -71,3 +72,6 @@ Route::get('/dashboard', function(){
 Route :: get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::resource('/dashboard/genre', AdminGenreController::class)->middleware('admin')->except('show');
+
